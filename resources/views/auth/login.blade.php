@@ -1,73 +1,73 @@
-@extends('layouts.app')
+@extends('admin.layouts.blank')
+@section('title', 'Admin Login')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<div class="card">
+    <div class="card-body">
+        <h3 class="text-center mt-0 mb-3">
+            <a href="{{route('index')}}" class="logo"><img src="{{my_asset(get_setting('logo'))}}" height="24" alt="logo-img"></a>
+        </h3>
+        <h5 class="text-center mt-0 text-color"><b>Admin Sign In</b></h5>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+        <form class="form-horizontal mt-3 mx-3" method="POST" action="{{route('login')}}">
+            @csrf
+            <div class="form-group mb-3">
+                <div class="col-12">
+                    <input class="form-control" name="username" type="text" required="" placeholder="Email or Username">
                 </div>
             </div>
+
+            <div class="form-group mb-3">
+                <div class="col-12">
+                    <input class="form-control" name="password" type="password" required="" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-12">
+                    <div class="checkbox checkbox-primary">
+                        <input id="checkbox-signup" name="remember" type="checkbox" checked="">
+                        <label for="checkbox-signup" class="text-color">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group text-center mt-3">
+                <div class="col-12">
+                    <button class="btn btn-primary btn-block btn-lg waves-effect waves-light w-100" type="submit">
+                        Log In</button>
+                </div>
+            </div>
+
+            <div class="form-group row mt-4 mb-0">
+                <div class="col-sm-7">
+                    <a href="{{route('password.request')}}" class="text-color">
+                        <i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
+
+@section('breadcrumb')
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0">@yield('title')</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
+                    <li class="breadcrumb-item active">@yield('title')</li>
+                </ol>
+            </div>
+
         </div>
     </div>
 </div>
+<!-- end page title -->
 @endsection

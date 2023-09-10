@@ -39,7 +39,7 @@ Route::controller(PaymentController::class)->group(function(){
 });
 
 // Admin Routes
-Route::controller(AdminController::class)->as('admin.')->prefix('admin')->group(function(){
+Route::controller(AdminController::class)->as('admin.')->middleware('admin')->prefix('admin')->group(function(){
     Route::get('/', 'index')->name('index');
     Route::get('/dashboard', 'index')->name('dashboard');
     Route::get('/profile', 'profile')->name('profile');
