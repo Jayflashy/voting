@@ -16,7 +16,7 @@
                 <th>Amount</th>
                 <th>Votes</th>
                 <th>Payment Method</th>
-                {{-- <th>Action</th> --}}
+                <th>Date</th>
             </tr>
             </thead>
             <tbody>
@@ -30,6 +30,7 @@
                     <td> {{format_price($item->amount)}}</td>
                     <td> {{$item->votes}}</td>
                     <td> {{$item->payment_method}}</td>
+                    <td>{{show_datetime($item->created_at)}}</td>
                 </tr>
                 @endforeach
             </tbody>

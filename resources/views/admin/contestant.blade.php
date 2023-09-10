@@ -27,7 +27,7 @@
                     <td>
                         <img src="{{my_asset($item->image)}}" class="table-image" alt="">
                     </td>
-                    <td>{{$item->category->name ?? "None"}}</td>
+                    <td> <a href="{{route('category', $item->category->slug)}}"> {{$item->category->name ?? "None"}} </a> </td>
                     <td>{{$item->votes}}</td>
                     <td>{!! get_status($item->status) !!}</td>
                     <td>

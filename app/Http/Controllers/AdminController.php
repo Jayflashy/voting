@@ -17,7 +17,9 @@ class AdminController extends Controller
     //
 
     function index(){
-        return view('admin.index');
+        $category = Category::all();
+        $data = Contestant::orderByDesc('votes')->paginate(20);
+        return view('admin.index', compact('data','category'));
     }
 
     function profile(){
