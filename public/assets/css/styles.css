@@ -1,0 +1,343 @@
+
+
+@import url("https://fonts.googleapis.com/css?family=Offside:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500,700");
+
+body {
+    min-height: 75vh;
+    padding-top: 6rem;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #212529;
+    text-align: left;
+    background-color: #f1edf7;
+    /* background-color :rgb(250, 220, 229); */
+}
+
+.header{
+    background-color: #fff;
+}
+.navbar {
+    /* position: relative; */
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    margin-bottom: 20px;
+    background-color: #fff;
+    height: 80px;
+    border-bottom: 3px solid #cda12c;
+    z-index: 99;
+}
+.logo {
+    height: 60px;
+}
+
+.page-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+}
+.footer {
+    background-color: #fff;
+    border-top: 5px solid rgba(0, 0, 0, 0.05);
+    bottom: 0px;
+    color: #000;
+    text-align: left;
+    padding: 20px 30px;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+.bt-footer {
+    /* color: #070a0d; */
+    text-align: center;
+    right: 0;
+    bottom: 0;
+    padding: 10px 20px;
+}
+
+.page-content {
+    padding: 2px 4px;
+    margin: 5px;
+    /*background: #fff;*/
+    min-height: 75vh;
+}
+.contest{
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 15px;
+    padding-left:0;
+    padding-right: 0;
+}
+.brd-bb{
+    border: 3px solid #4267B2;
+}
+.voting-results {
+    margin: 20px 0 0 0;
+    text-align: center;
+    border-top: 0px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.voting-results .sharing-zone .social {
+    border: 0px solid #172a50;
+}
+
+.voting-results .sharing-zone .social img {
+    height: 32px;
+}
+.voting-results .sharing-zone h3 {
+    padding: 0px 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.share {
+    color: #fff !important;
+}
+.share .facebook {
+    background-color: #4267B2;
+    color: #fff !important;
+}
+.share .twitter {
+    background: #00ACEE;
+    color: #fff !important;
+}
+.share .whatsapp {
+    background: #4fce5d;
+    color: #fff;
+}
+.share>.btn{
+    border-radius: 25px;
+}
+
+.category{
+    background-color: #000;
+    padding-top: 1rem;
+}
+.category-header{
+    padding: 0.5rem !important;
+    padding-top: 1rem !important;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.joinButton {
+    padding: 10px 20px;
+    font-size: 13px;
+    background-color: #cda12c;
+    border: 2px solid #7a6c43;
+    color: #000;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition */
+}
+.joinButton:hover {
+    background-color: #7a6c43; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
+}
+.title_cat {
+    color: #cda12c;
+    font-size: 18px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* Contestants */
+.contestant{
+    justify-content: center;
+    align-items: center !important;
+    /* width: 25%; */
+    margin: auto;
+    margin-bottom: 1.5rem !important;
+}
+.contestant-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin: 0 auto;
+}
+#number-count {
+    height: 30px;
+    width: 30px;
+}
+.number-count{
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 25px;
+    padding: 2px;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    color: white;
+    background-color: #4a0939;
+}
+.number-count-1 {
+    background-color: blue;
+}
+.number-count-2 {
+    background-color: green;
+}
+.number-count-6 {
+    background-color: yellow;
+}
+.number-count-4 {
+    background-color: orange;
+}
+.number-count-5 {
+    background-color: red;
+}
+.number-count-3 {
+    background-color: purple;
+}
+.vote-btn{
+    width: 100%;
+    border-radius: 20px;
+    padding: 7px 0px !important;
+    gap: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
+.contestant-image{
+    border-bottom: 5px solid #eae830;
+    border-top: 5px solid #17a2b8;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.contestant-image img{
+    border-radius: 50%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+}
+.contestant-item{
+    transition: all .5s;
+    padding-bottom: 10px;
+}
+.contestant-item:hover {
+    border-radius: 10px;
+    box-shadow: 1px 2px 5px 3px #ccc;
+    cursor: pointer
+}
+
+.name{
+    color: #f1edf7;
+}
+.name-div{
+    letter-spacing: .5px;
+    line-height: 1;
+}
+@media (max-width: 319px){
+    .name{
+        font-size: 9px;
+    }
+    .name-div{
+        letter-spacing: 0;
+        height: 40px;
+        line-height: .8;
+    }
+    .contestant-image{
+        height: 50px;
+        width: 50px;
+    }
+}
+@media (min-width: 320px){
+    .name{
+        font-size: 9px;
+    }
+    .name-div{
+        letter-spacing: 0;
+        height: 40px;
+        line-height: .8;
+    }
+    .contestant-image{
+        height: 70px;
+        width: 70px;
+    }
+}
+
+@media (min-width: 520px){
+    .name{
+        font-size: 11px;
+    }
+    .name-div{
+        height: 45px;
+        letter-spacing: 0.2px;
+        line-height: .8;
+    }
+    .contestant-image{
+        height: 70px;
+        width: 70px;
+    }
+}
+@media (min-width: 765px){
+    .name{
+        font-size: 12px;
+    }
+    .name-div{
+        letter-spacing: 0.5px;
+        height: 55px;
+        line-height: .9;
+    }
+}
+@media (min-width: 844px){
+    .name{
+        font-size: 14px;
+    }
+    .name-div{
+        letter-spacing: 0.5px;
+        height: 50px;
+        line-height: 1;
+    }
+    .contestant-image{
+        height: 100px;
+        width: 100px;
+    }
+}
+@media (min-width: 922px){
+    .name{
+        font-size: 15px;
+    }
+    .name-div{
+        letter-spacing: 0.5px;
+        height: 49px;
+        line-height: 1;
+    }
+    .contestant-image{
+        height: 120px;
+        width: 120px;
+    }
+}
+@media (min-width: 1200px) {
+    .contestant-image{
+        height: 140px;
+        width: 140px;
+    }
+}
+.greenColor {
+    color: #cda12c;
+}

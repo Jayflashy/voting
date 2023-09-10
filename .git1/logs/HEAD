@@ -1,0 +1,16 @@
+0000000000000000000000000000000000000000 5f41b25cbc3941d76138708ac301552222f7b0cd Joshua Adeyemi <jadesdevelopers@gmail.com> 1693833596 +0100	commit (initial): Started working on project
+5f41b25cbc3941d76138708ac301552222f7b0cd 0000000000000000000000000000000000000000 Joshua Adeyemi <jadesdevelopers@gmail.com> 1693833614 +0100	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 5f41b25cbc3941d76138708ac301552222f7b0cd Joshua Adeyemi <jadesdevelopers@gmail.com> 1693833614 +0100	Branch: renamed refs/heads/master to refs/heads/main
+5f41b25cbc3941d76138708ac301552222f7b0cd c3a57b1b4e2387f03b1a43d60532015b5c32b90a Joshua Adeyemi <jadesdevelopers@gmail.com> 1693836032 +0100	commit: Page layouts and settings models
+c3a57b1b4e2387f03b1a43d60532015b5c32b90a ba1163f4a3129ee1ccb5c75954a416bbd9f494e8 Joshua Adeyemi <jadesdevelopers@gmail.com> 1693836538 +0100	commit: Settings migration and setup
+ba1163f4a3129ee1ccb5c75954a416bbd9f494e8 5a63f4377b0c903a74a1fad3a16dba09cb0a18fd Joshua Adeyemi <jadesdevelopers@gmail.com> 1693926678 +0100	commit: Homepage design
+5a63f4377b0c903a74a1fad3a16dba09cb0a18fd 2c564f80d8b674da14dec048c27b6e673d4082d5 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694115250 +0100	commit: Admin Dashboard Setup
+2c564f80d8b674da14dec048c27b6e673d4082d5 ce9da5265a9776a96cee1007423d3e35e47b8757 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694117759 +0100	commit: Admin Layout Setup
+ce9da5265a9776a96cee1007423d3e35e47b8757 71e714f6e0220bd6eb9a2982304aebc6a0f169a8 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694118932 +0100	commit: Contestant and Categories Models
+71e714f6e0220bd6eb9a2982304aebc6a0f169a8 ee40d627567d2de38d1c500f0d0aa14d32b061c6 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694122499 +0100	commit: Contestant and Categories CRUD Setup
+ee40d627567d2de38d1c500f0d0aa14d32b061c6 3b724dc8a30c75fa90b137d816db7df88c638323 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694129870 +0100	commit: Frontpage design
+3b724dc8a30c75fa90b137d816db7df88c638323 caa32815ecb0ed65138ea93be3212c06a9f4dfd0 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694159301 +0100	commit: Contestant page design
+caa32815ecb0ed65138ea93be3212c06a9f4dfd0 037e3729c088c2287d6332b90c205657741fd1e9 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694177960 +0100	commit: Payment Setup and Views
+037e3729c088c2287d6332b90c205657741fd1e9 389e290ebc955499726fd17820b5684319cbed94 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694293206 +0100	commit: Voting page and payment controlelrs.
+389e290ebc955499726fd17820b5684319cbed94 66319033ea5495603210693f7d23a50db402c826 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694301439 +0100	commit: Paypal payment and Flutterwave imtegration
+66319033ea5495603210693f7d23a50db402c826 aafbf3a0b3591238b51034322763660617f13c42 Joshua Adeyemi <jadesdevelopers@gmail.com> 1694307117 +0100	commit: Stripe payment imtegration
