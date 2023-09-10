@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{
     Category,
     Contestant,
+    Payment,
     Setting,
     SystemSetting
 };
@@ -85,8 +86,8 @@ class AdminController extends Controller
             $image = $request->file('image');
             $extension = $image->getClientOriginalExtension();
             $imageName = Str::random(25). '.' . $extension; // Generating a random string of 20 characters plus the file extension
-            $image->move(public_path('uploads/platforms'), $imageName);
-            $input['image'] = 'platforms/'.$imageName;
+            $image->move(public_path('uploads/contestants'), $imageName);
+            $input['image'] = 'contestants/'.$imageName;
         }
         $service = Contestant::findOrFail($id)->update($input);
 
@@ -173,7 +174,8 @@ class AdminController extends Controller
 
     // reports
     function payment_history(){
-        return view('admin.report.payment');
+        $payments = Payment::orderByDesc('id')->paginate(30);
+        return view('admin.report.payment', compact('payments'));
     }
 
     function vote_history(){
