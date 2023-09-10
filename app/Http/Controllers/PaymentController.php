@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Utility\MomoApi;
 use Illuminate\Http\Request;
 use Bhekor\LaravelFlutterwave\Facades\Flutterwave;
 use Exception;
+use Bmatovu\MtnMomo\Products\Collection;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Stripe;
 class PaymentController extends Controller
@@ -164,6 +166,31 @@ class PaymentController extends Controller
 
     // Momo Payment
     function initMomo($details){
+        $reference = getTrx(15);
+        $details['reference'] = $reference;
+        $amount = $details['amount'];
+        session()->put('payment_data', $details);
+        try{
+            $collection = new MomoApi();
+            // return $collection->getToken();
+            $transactionId = $collection->requestToPay($reference, $details['phone'], 10, $details['desc']);
 
+            $response = $collection->getTransactionStatus($transactionId);
+            if ($response['status'] == "SUCCESSFUL") {
+                // code...
+                $paydone = new HomeController;
+                return $paydone->complete_voting($details, $response);
+            } else {
+                // code...
+                return redirect()
+                    ->route('index')
+                    ->with('error', $response['message'] ?? 'Payment was not successful. Something went wrong.');
+            }
+        }catch(Exception $e){
+            // dd($e);
+            return redirect()
+                ->route('index')
+                ->with('error', $response['message'] ?? 'Something went wrong.');
+        }
     }
 }

@@ -192,6 +192,11 @@
                             <label class="form-label">{{__('Momo Provider Callback Host')}}</label>
                             <input type="text" class="form-control" name="MOMO_PROVIDER_CALLBACK_HOST" value="{{ env('MOMO_PROVIDER_CALLBACK_HOST') }}" placeholder="Momo Provider Callback Host" required>
                         </div>
+                        <div class="form-group">
+                            <input type="hidden" name="types[]" value="MOMO_API_BASE_URI">
+                            <label class="form-label">{{__('Momo Base URL')}}</label>
+                            <input type="text" class="form-control" name="MOMO_API_BASE_URI" value="{{ env('MOMO_API_BASE_URI') }}" placeholder="Momo  Base URL" required>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">

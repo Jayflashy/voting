@@ -34,7 +34,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{route('admin.payment.history')}}">Payment History</a></li>
-                        <li><a href="{{route('admin.voting.history')}}">Voting History</a></li>
+                        {{-- <li><a href="{{route('admin.voting.history')}}">Voting History</a></li> --}}
                     </ul>
                 </li>
 
