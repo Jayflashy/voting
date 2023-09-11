@@ -11,6 +11,6 @@ class Category extends Model
     use HasFactory, SoftDeletes;
     public function contestants()
     {
-        return $this->hasMany(Contestant::class);
+        return $this->hasMany(Contestant::class)->where('status', 1);
     }
 }

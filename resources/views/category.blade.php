@@ -3,7 +3,7 @@
 
 @section('content')
 
-@php $results = array(); @endphp
+@php $results = array(); $counts = array();@endphp
 <div class="row contest">
     <div class="col-md-12">
         <div class="category ">

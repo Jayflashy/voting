@@ -1,4 +1,4 @@
-@php $results = array(); @endphp
+@php $results = array(); $counts = array();@endphp
 <div class="row contest">
     <div class="col-md-8">
         <div class="category ">
@@ -32,7 +32,7 @@
                     </div>
 
                     @php
-                    $counts[] = $loop->iteration;
+                    $counts[] = $item->iteration ;
                     $results[] = $item->votes; @endphp
                     @endforeach
 
