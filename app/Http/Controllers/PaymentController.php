@@ -23,7 +23,7 @@ class PaymentController extends Controller
             'amount' => $details['amount'],
             'email' => $details['email'],
             'tx_ref' => $reference,
-            'currency' => $details['currency'] ?? "NGN",
+            'currency' => get_setting('currency_code') ?? "NGN",
             'redirect_url' => route('flutter.success'),
             'customer' => [
                 'email' => $details['email'],
@@ -169,7 +169,7 @@ class PaymentController extends Controller
     function initMomo($details){
         $reference = getTrx(15);
         $details['reference'] = $reference;
-        $amount = $details['amount'];
+        $amount = $details['amount2'];
         session()->put('payment_data', $details);
         try{
             $collection = new MomoApi();

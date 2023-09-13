@@ -17,6 +17,12 @@
         <form action="{{route('vote')}}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="row">
+                <div class="form-group col-12">
+                    <label for="country" class="form-label">Select Country</label>
+                    <select class="form-control form-select" id="countrySelect" required name="country">
+                        @include('country')
+                    </select>
+                </div>
                 <div class="form-group col-sm-6">
                     <label class="form-label" for="Email">{{__('Your Email')}}</label>
                     <div class="">
@@ -176,4 +182,5 @@
         document.getElementById("ItemsTotal").innerHTML = totalFormatted;
         document.getElementById("PayTotal").innerHTML = totalFormatted;
     }
+
 </script>

@@ -90,6 +90,7 @@ class HomeController extends Controller
         $payments->contestant_id = $details['contestant_id'];
         $payments->payment_method = $details['payment_type'];
         $payments->name = "Awesome Voter";
+        $payments->country = $details['country'] ?? "";
         $payments->phone = $details['phone'];
         $payments->code = $details['reference'] ?? getTrx(15);
         $payments->votes = $details['quantity'];

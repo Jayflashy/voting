@@ -15,6 +15,8 @@
     <link href="{{ static_asset('css/vendors.css') }}" rel="stylesheet">
     <link href="{{ static_asset('css/styles.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{my_asset(get_setting('favicon'))}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
     <!--Chart.js JS CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
@@ -54,6 +56,7 @@
     <script src="{{ static_asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ static_asset('js/core.js') }}"></script>
     <script src="{{static_asset('js/sweetalert.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @yield('scripts')
     @stack('scripts2')
     <script type="text/javascript">
