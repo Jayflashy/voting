@@ -11,6 +11,7 @@
                 <th>S/N</th>
                 <th>Contestant Name</th>
                 <th>Payment Code</th>
+                <th>Country</th>
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Amount</th>
@@ -25,6 +26,7 @@
                     <td>{{$key +1 }}</td>
                     <td> {{$item->contestant->name }} </td>
                     <td> {{$item->code}}</td>
+                    <td> {{$item->country}}</td>
                     <td> {{$item->email}}</td>
                     <td> {{$item->phone}}</td>
                     <td> {{format_price($item->amount)}}</td>

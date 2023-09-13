@@ -84,9 +84,8 @@ class PaymentController extends Controller
             "purchase_units" => [
                 0 => [
                     "amount" => [
-                        // "currency_code" => get_setting('currency_code'),
-                        "currency_code" => "EUR",
-                        "value" => $details['amount']
+                        "currency_code" => get_setting('currency_code2'),
+                        "value" => $details['amount2']
                     ]
                 ]
             ]
@@ -143,23 +142,25 @@ class PaymentController extends Controller
     }
     function stripe_payment(Request $request){
         $details = $request->session()->get('payment_data');
-        // return round($total_amount * 100 ,2);
         try{
 
             Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
             // dd($request);
+            // return $details;
+            $amount = number_format($details['amount2']);
             $payment = json_encode(Stripe\Charge::create ([
-                "amount" => round($details['amount'] * 100 ,2),
-                "currency" => "usd",
+                "amount" => round($amount * 100 , 2),
+                "currency" => get_setting('currency_code2'),
                 "source" => $request->stripeToken,
                 "description" => $details['desc']
             ]));
             $paydone = new HomeController;
             return $paydone->complete_voting($details, $payment);
         }catch(Exception $e){
+            // return $e;
             return redirect()
                 ->route('index')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+                ->with('error', $e->getMessage() ?? 'Something went wrong.');
         }
 
     }

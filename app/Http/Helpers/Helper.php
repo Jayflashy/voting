@@ -145,6 +145,12 @@ if (!function_exists('format_price')) {
         return $currency .$fomated_price;
     }
 }
+function format_price2($price)
+{
+    $fomated_price = number_format($price, 2);
+    $currency = get_setting('currency2');
+    return $currency .$fomated_price;
+}
 function sym_price($price)
 {
     $fomated_price = number_format($price, 2);

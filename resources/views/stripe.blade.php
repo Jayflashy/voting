@@ -33,7 +33,7 @@
                                 class="btn btn-success mt-3"
                                 type="button"
                                 style="margin-top: 20px; width: 100%;padding: 7px;"
-                                onclick="createToken()">PAY ${{$details['amount']}}
+                                onclick="createToken()">PAY {{format_price2($details['amount2'])}}
                             </button>
                         <form>
                     </div>

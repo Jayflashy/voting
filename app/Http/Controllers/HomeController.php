@@ -45,6 +45,7 @@ class HomeController extends Controller
         $amount = $request->quantity * $price;
         $details = $request->all();
         $details['amount'] = $amount;
+        $details['amount2'] = number_format($amount / get_setting('currency_rate'), 3);  //convert to EUR
         $details['desc'] = "Payment for {$contestant->name}";
         // return $details;
         $payment = new PaymentController;
@@ -58,10 +59,16 @@ class HomeController extends Controller
             return $payment->initFlutter($details);
         }
         if($request->payment_type == 'stripe'){
+            if($details['amount2'] < 1){
+                return back()->withError('Amount is Less than 1');
+            }
             $request->session()->put('payment_data', $details);
             return $payment->initStripe($details);
         }
         if($request->payment_type == 'paypal'){
+            if($details['amount2'] < 1){
+                return back()->withError('Amount is Less than 1');
+            }
             $request->session()->put('payment_data', $details);
             return $payment->initPaypal($details);
         }

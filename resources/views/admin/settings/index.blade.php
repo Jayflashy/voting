@@ -100,13 +100,25 @@
     <div class="card-body">
         <form class="row" action="{{route('admin.setting.update')}}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="form-group col-sm-6 ">
+            <div class="form-group col-sm-4 ">
                 <label class="form-label">@lang('Currency Symbol')</label>
                 <input type="text" class="form-control" name="currency" value="{{get_setting('currency')}}" required placeholder="Currency Symbol"/>
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-4">
                 <label class="form-label">@lang('Currency Code')</label>
                 <input type="text" class="form-control" name="currency_code" value="{{get_setting('currency_code')}}" required placeholder="Currency Code"/>
+            </div>
+            <div class="form-group col-sm-4 ">
+                <label class="form-label">@lang('Currency2 Symbol')</label>
+                <input type="text" class="form-control" name="currency2" value="{{get_setting('currency2')}}" required placeholder="Currency Symbol"/>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="form-label">@lang('Currency2 Code')</label>
+                <input type="text" class="form-control" name="currency_code2" value="{{get_setting('currency_code2')}}" required placeholder="Currency2 Code"/>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="form-label">@lang('Conversion Rate') ( 1{{get_setting('currency_code2')}} to {{get_setting('currency_code')}} )</label>
+                <input type="text" class="form-control" name="currency_rate" value="{{get_setting('currency_rate')}}" required placeholder="Conversion Rate"/>
             </div>
             <div class="text-end">
                 <button class="btn btn-success btn-block" type="submit">@lang('Update Setting')</button>

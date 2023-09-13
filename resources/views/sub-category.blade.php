@@ -34,7 +34,7 @@ $counts = array();
                     </div>
 
                     @php
-                    $counts[] = $loop->iteration . "(".result_percentage($item->id).")";
+                    $counts[] = $loop->iteration . " (".result_percentage($item->id).")";
                     $results[] = $item->votes; @endphp
                     @endforeach
 
@@ -105,8 +105,14 @@ $counts = array();
         ]
         },
         options: {
-            legend: { display: false },
-
+            legend: { display: true },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
     });
 </script>
