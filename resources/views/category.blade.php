@@ -32,7 +32,7 @@
                     </div>
 
                     @php
-                    $counts[] = $loop->iteration;
+                    $counts[] = $loop->iteration . "(".result_percentage($item->id).")";
                     $results[] = $item->votes; @endphp
                     @endforeach
 

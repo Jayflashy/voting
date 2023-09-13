@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Contestant;
 use App\Models\Setting;
 use App\Models\SystemSetting;
 
@@ -154,4 +155,12 @@ function format_number($price)
 {
     $fomated_price = number_format($price, 2);
     return $fomated_price;
+}
+
+function result_percentage($id){
+    $contestant = Contestant::find($id);
+    $category = $contestant->category;
+    $total = $category->contestants->sum('votes');
+    $val = number_format(($contestant->votes / $total) * 100, 2);
+    return $val. "%";
 }
