@@ -127,6 +127,12 @@ class AdminController extends Controller
             $image->move(public_path('uploads'),$imageName);
             $input['sponsor'] =$imageName;
         }
+        if($request->hasFile('banner')){
+            $image = $request->file('banner');
+            $imageName = Str::random(13).'.png';
+            $image->move(public_path('uploads'),$imageName);
+            $input['banner'] =$imageName;
+        }
 
         $setting = Setting::first();
         $setting->update($input);

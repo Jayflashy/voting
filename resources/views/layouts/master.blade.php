@@ -26,6 +26,7 @@
     {{-- Header --}}
     @include('layouts.header')
     <div class="page-wrap">
+        @yield('banner')
         <div class="page-content">
             <div class="container">
                 @yield('content')

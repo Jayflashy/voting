@@ -106,3 +106,48 @@
     });
 </script>
 @endpush
+
+@section('banner')
+<section data-v-9c3df010="" class="p-0 text-center rounded-0 custom-top-section">
+    <div data-v-9c3df010="" class="w-100 p-md-5 px-0 relative">
+        <div data-v-9c3df010="" class="container pt-5 pt-md-3 pb-5 pb-md-0">
+            <h1 data-v-9c3df010="" class="text-white pb-2 font-weight-bold text-sm">
+               LIST OF CANDIDATE FOR
+            </h1>
+            <div data-v-9c3df010="" class="breadcrumbs">
+                <h3 data-v-9c3df010="" class="text-white font-weight-bold text-white text-xxl">
+                   @yield('title')
+                </h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+@endsection
+
+@section('scripts')
+<style>
+    .custom-top-section {
+        background-attachment: fixed;
+        background-image: url({{my_asset(get_setting('banner'))}});
+        background-position-y: -475px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+    .custom-top-section > div {
+        position: relative;
+    }
+    .custom-top-section:before {
+        background: #015191;
+        content: "";
+        height: 100%;
+        left: 0;
+        opacity: 0.4;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+</style>
+
+@endsection

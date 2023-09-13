@@ -76,6 +76,13 @@
                 </div>
             </div>
             <div class="form-group col-lg-12">
+                <label class="form-label">@lang('Banner Image')</label>
+                <div class="col-sm-12">
+                    <input type="file" class="form-control" name="banner" accept="image/*"/>
+                    <img class="primage mt-2" src="{{ my_asset(get_setting('banner'))}}" alt="Banner Image" >
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
                 <label class="form-label">@lang('Sponsor Image')</label>
                 <div class="col-sm-12">
                     <input type="file" class="form-control" name="sponsor" accept="image/*"/>

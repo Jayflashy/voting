@@ -222,13 +222,13 @@ body {
     border-top: 5px solid #17a2b8;
     height: 100px;
     width: 100px;
-    border-radius: 50%;
+    border-radius: 10px;
     text-align: center;
     justify-content: center;
     align-items: center;
 }
 .contestant-image img{
-    border-radius: 50%;
+    border-radius: 10px;
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;

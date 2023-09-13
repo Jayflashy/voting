@@ -28,6 +28,6 @@ class Setting extends Model
         'custom_js',
         'custom_css',
         'is_adsense',
-        'meta_keywords','is_announcement','announcement','sponsor','price'
+        'meta_keywords','is_announcement','announcement','sponsor','price','banner'
     ];
 }
