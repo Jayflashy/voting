@@ -9,7 +9,7 @@
         </h3>
         <h5 class="text-center mt-0 text-color"><b>Admin Sign In</b></h5>
 
-        <form class="form-horizontal mt-3 mx-3" method="POST" action="{{route('login')}}">
+        <form class="form-horizontal mt-3 mx-3" method="POST" action="{{route('admin.login')}}">
             @csrf
             <div class="form-group mb-3">
                 <div class="col-12">

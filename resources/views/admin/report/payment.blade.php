@@ -4,7 +4,7 @@
 @section('content')
 <div class="card">
     <h4 class="fw-bold card-header">@lang('Payment History')</h4>
-    <div class="card-body">
+    <div class="card-body table-responsive">
         <table class="table table-hover table-bordered" id="datatables" width="100%">
             <thead>
             <tr>
