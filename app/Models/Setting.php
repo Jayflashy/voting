@@ -27,7 +27,7 @@ class Setting extends Model
         'currency_code',
         'custom_js',
         'custom_css',
-        'is_adsense',
+        'is_adsense','price2',
         'meta_keywords','is_announcement','announcement','sponsor','price','banner','currency2','currency_rate','currency_code2',
     ];
 }

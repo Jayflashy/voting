@@ -43,9 +43,11 @@ class HomeController extends Controller
         $contestant = Contestant::findOrFail($request->contestant_id);
         $price = get_setting('price');
         $amount = $request->quantity * $price;
+        $amount2 = $request->quantity * get_setting('price2');
         $details = $request->all();
         $details['amount'] = $amount;
-        $details['amount2'] = number_format($amount / get_setting('currency_rate'), 3);  //convert to EUR
+        $details['amount2'] = $amount2;
+        // $details['amount2'] = number_format($amount / get_setting('currency_rate'), 3);  //convert to EUR
         $details['desc'] = "Payment for {$contestant->name}";
         // return $details;
         $payment = new PaymentController;

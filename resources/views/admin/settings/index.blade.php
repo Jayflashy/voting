@@ -22,6 +22,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="form-label">@lang('Contest Amount') ({{get_setting('currency2')}})</label>
+                    <div class="">
+                        <input type="text" name="price2" required class="form-control" value="{{ get_setting('price2') }}">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="form-label">@lang('Website Email')</label>
                     <div class="">
                         <input type="text" name="email" class="form-control" value="{{ get_setting('email') }}">

@@ -45,12 +45,14 @@ class PaymentController extends Controller
     public function flutter_success(Request $request)
     {
         $status = request()->status;
+        $transactionID = Flutterwave::getTransactionIDFromCallback();
+        $payment = Flutterwave::verifyTransaction($transactionID);
         $details = $request->session()->get('payment_data');
 
         //if payment is successful
-        if ($status ==  'successful' || $status == 'completed') {
-            $transactionID = Flutterwave::getTransactionIDFromCallback();
-            $payment = Flutterwave::verifyTransaction($transactionID);
+        if ($payment['status'] ==  'success' || $status == 'completed') {
+            // $transactionID = Flutterwave::getTransactionIDFromCallback();
+            // $payment = Flutterwave::verifyTransaction($transactionID);
             $details = $payment['data']['meta'];
             $paydone = new HomeController;
             return $paydone->complete_voting($details, $payment);

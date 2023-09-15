@@ -17,7 +17,7 @@
         <form action="{{route('vote')}}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="row">
-                <div class="form-group col-12">
+                <div class="form-group col-sm-6">
                     <label for="country" class="form-label">Select Country</label>
                     <select class="form-control form-select" id="countrySelect" required name="country">
                         @include('country')
@@ -38,13 +38,19 @@
                 <div class="form-group col-sm-6">
                     <label class="form-label">{{__('Select Votes')}}</label>
                     <div class="">
-                        <input class="form-control" name="quantity" type="number" id="quantity" value="1" data-price="{{get_setting('price')}}" onkeyup="CalculateItemsValue()" />
+                        <input class="form-control" name="quantity" type="number" id="quantity" value="1" data-price="{{get_setting('price')}}" data-price2="{{get_setting('price2')}}" onkeyup="CalculateItemsValue()" />
                     </div>
                 </div>
-                <div class="form-group col-sm-6">
-                    <label class="form-label ">{{__('Total Price')}}</label>
+                <div class="form-group col-6">
+                    <label class="form-label ">{{__('Total Price')}}  {{get_setting('currency')}}</label>
                     <div class="7">
-                        <span class="form-control"> {{get_setting('currency')}}<span id="ItemsTotal">{{get_setting('price')}}</span> </span>
+                        <span class="form-control"> {{get_setting('currency')}} <span id="ItemsTotal">{{get_setting('price')}}</span> </span>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label class="form-label ">{{__('Total Price')}}  {{get_setting('currency2')}}</label>
+                    <div class="7">
+                        <span class="form-control"> {{get_setting('currency2')}} <span id="ItemsTotal2">{{get_setting('price2')}}</span> </span>
                     </div>
                 </div>
             </div>
@@ -168,19 +174,23 @@
 
     function CalculateItemsValue() {
         var total = 0;
+        var total2 = 0;
         for (i = 1; i <= total_items; i++) {
             itemID = document.getElementById("quantity" );
             if (typeof itemID === 'undefined' || itemID === null) {
                 alert("No such item - " + "qnt_" + i);
             } else {
                 var price = parseFloat(itemID.getAttribute("data-price"));
+                var price2 = parseFloat(itemID.getAttribute("data-price2"));
                 total += parseInt(itemID.value) * price;
+                total2 += parseInt(itemID.value) * price2;
             }
         }
 
         var totalFormatted = total.toFixed(2); // Round to 2 decimal places
+        var totalFormatted2 = total2.toFixed(2); // Round to 2 decimal places
         document.getElementById("ItemsTotal").innerHTML = totalFormatted;
-        document.getElementById("PayTotal").innerHTML = totalFormatted;
+        document.getElementById("ItemsTotal2").innerHTML = totalFormatted2;
     }
 
 </script>
