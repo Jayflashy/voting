@@ -33,7 +33,6 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/logout', 'logout')->name('logout');
 });
 
-// Payment Routes
 // Payment Callback
 Route::controller(PaymentController::class)->group(function(){
     Route::get('/paypal/success/', 'paypal_success')->name('paypal.success');
@@ -60,6 +59,10 @@ Route::controller(AdminController::class)->as('admin.')->middleware('admin')->pr
     Route::post('/contestant/create', 'create_contestant')->name('contestant.create');
     Route::post('/contestant/update/{id}', 'update_contestant')->name('contestant.update');
     Route::get('/contestant/delete/{id}', 'delete_contestant')->name('contestant.delete');
+    //Reports
+    Route::get('/results', [AdminController::class, 'all_results'])->name('results');
+    Route::get('/result/category/{id}', [AdminController::class, 'view_result'])->name('viewresult');
+
     // Settings
     Route::get('/settings', 'settings')->name('settings');
     Route::post('/setting', 'update_settings')->name('setting.update');

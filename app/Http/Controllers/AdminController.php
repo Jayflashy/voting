@@ -99,6 +99,19 @@ class AdminController extends Controller
         Contestant::findOrFail($id)->delete();
         return back()->withSuccess("Category Deleted Successfully");
     }
+    // Results
+    function all_results() {
+        $contests = Category::where('status', 1)->get();
+        return view('admin.result.index' , compact('contests'));
+    }
+    function view_result($id)
+    {
+        $contest = Category::find($id);
+        // get Contestants
+        $contestants = Contestant::where('category_id', $contest->id)->OrderByDesc('votes')->get();
+        // dd($contestants);
+        return view('admin.result.view', compact('contest','contestants'));
+    }
 
     // Settings
     function payment_settings(){

@@ -28,6 +28,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('admin.results')}}" class=" waves-effect">
+                        <i class="fas fa-check"></i>
+                        <span>Voting Results</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-file-text-line"></i>
                         <span>Transactions</span>
