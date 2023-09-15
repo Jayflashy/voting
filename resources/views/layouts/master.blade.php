@@ -57,6 +57,7 @@
     <script src="{{ static_asset('js/core.js') }}"></script>
     <script src="{{static_asset('js/sweetalert.min.js')}}"></script>
     <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @yield('scripts')
     @stack('scripts2')
@@ -65,6 +66,11 @@
         Snackbar.show({
             text: '{{Session::get('success')}}',
             backgroundColor: '#38c172'
+        });
+        swal("Successful!", '{{Session::get('success')}}', "success")
+        .then((willDelete) => {
+            if (willDelete) {
+            }
         });
         @endif
         @if(Session::get('vsuccess'))
@@ -75,6 +81,11 @@
         });
         @endif
         @if(Session::get('error'))
+        swal("Error!", '{{Session::get('error')}}', "warning")
+        .then((willDelete) => {
+            if (willDelete) {
+            }
+        });
         Snackbar.show({
             text: '{{Session::get('error')}}',
             backgroundColor: '#e3342f'

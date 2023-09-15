@@ -75,7 +75,7 @@
                     @endif
                     @if (sys_setting('stripe_payment') == 1)
                     <div class="col-6 col-sm-3">
-                        <label class="mb-2 pay-option" data-toggle="tooltip" title="Stripe">
+                        <label class="mb-2 pay-option" data-toggle="tooltip" title="Stripe" onclick="stripePayment()">
                             <input type="radio" id="" name="payment_type" value="stripe">
                             <span>
                                 <img class="pay-method" src="{{static_asset('img/stripe.png')}}" >
@@ -111,6 +111,33 @@
 
             {{-- <button class=" mt-2 w-100 btn joinButton text-white">Continue</button> --}}
         </form>
+        {{-- Stripe Payment form --}}
+        <div class="card-body" id="stripeForm">
+            @if (session('success'))
+            <div
+                style="color: green;
+                    border: 2px green solid;
+                    text-align: center;
+                    padding: 5px;margin-bottom: 10px;">
+                Payment Successful!
+            </div>
+            @endif
+            <form id='checkout-form' method='post' action="{{route('stripe.payment')}}">
+                @csrf
+                <input type='hidden' name='stripeToken' id='stripe-token-id'>
+                <input type="hidden" name="details" id="stripeDetails" value="">
+                <label for="card-element" class="fw-bold mb-2">Pay with Stripe</label>
+                <br>
+                <div id="card-element" class="form-control" ></div>
+                <button
+                    id='pay-btn'
+                    class="btn btn-success mt-3"
+                    type="button"
+                    style="margin-top: 20px; width: 100%;padding: 7px;"
+                    onclick="createToken()">PAY {{get_setting('currency2')}} <span id="stripeTotal">{{get_setting('price2')}}</span>
+                </button>
+            <form>
+        </div>
     </div>
 </div>
 <div class="hidden">
@@ -121,6 +148,9 @@
 
 {{-- @push('css') --}}
 <style>
+    #stripeForm{
+        display: none;
+    }
     .form-label{
         font-weight: bold;
     }
@@ -200,6 +230,7 @@
         document.getElementById("ItemsTotal").innerHTML = totalFormatted;
         document.getElementById("amount").innerHTML = totalFormatted;
         document.getElementById("ItemsTotal2").innerHTML = totalFormatted2;
+        document.getElementById("stripeTotal").innerHTML = totalFormatted2;
     }
 
     // get form fields
@@ -219,8 +250,9 @@
         return formData;
     }
 
-
     function makePayment() {
+        //Hide stripe form and other forms
+        document.getElementById('stripeForm').style.display = 'none';
 
         const country = document.getElementById('countrySelect').value;
         const email = document.getElementById('Email').value;
@@ -256,4 +288,52 @@
 
         FlutterwaveCheckout(checkoutData);
     }
+
+    function stripePayment(){
+        // show stripe form
+        const country = document.getElementById('countrySelect').value;
+        const email = document.getElementById('Email').value;
+        const phone = document.getElementById('phone').value;
+        const quantity = document.getElementById('quantity').value;
+        const price = parseFloat(document.getElementById('quantity').getAttribute('data-price'));
+        const totalAmount = price * parseFloat(quantity);
+        const formFields = getFormFields();
+        // show alert if name and email empty
+        if(email == "" || phone == ""){
+            Snackbar.show({
+                text: 'Please fill all details',
+                backgroundColor: '#e3342f'
+            });
+            return;
+        }
+
+        document.getElementById('stripeForm').style.display = 'block';
+        //add formfields to form
+        document.getElementById('stripeDetails').value = JSON.stringify(formFields);
+
+    }
+
+    var stripe = Stripe('{{ env('STRIPE_KEY') }}')
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    function createToken() {
+        document.getElementById("pay-btn").disabled = true;
+        stripe.createToken(cardElement).then(function(result) {
+
+
+            if(typeof result.error != 'undefined') {
+                document.getElementById("pay-btn").disabled = false;
+                alert(result.error.message);
+            }
+
+            // creating token success
+            if(typeof result.token != 'undefined') {
+                document.getElementById("stripe-token-id").value = result.token.id;
+                document.getElementById('checkout-form').submit();
+            }
+        });
+    }
+
 </script>

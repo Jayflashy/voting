@@ -143,7 +143,12 @@ class PaymentController extends Controller
         return view('stripe', compact('details'));
     }
     function stripe_payment(Request $request){
-        $details = $request->session()->get('payment_data');
+        $request->all();
+        $details = json_decode($request->details, true);
+        $details['payment_type'] = 'stripe' ;
+        $details['amount'] = $details['quantity'] * get_setting('price2');
+        $details['amount2'] = $details['quantity'] * get_setting('price2');
+        // return $details;
         try{
 
             Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
