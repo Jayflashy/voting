@@ -61,6 +61,7 @@ class HomeController extends Controller
             return $payment->initFlutter($details);
         }
         if($request->payment_type == 'stripe'){
+            $details['amount'] = $amount2;
             if($details['amount2'] < 1){
                 return back()->withError('Amount is Less than 1');
             }
@@ -68,6 +69,7 @@ class HomeController extends Controller
             return $payment->initStripe($details);
         }
         if($request->payment_type == 'paypal'){
+            $details['amount'] = $amount2;
             if($details['amount2'] < 1){
                 return back()->withError('Amount is Less than 1');
             }

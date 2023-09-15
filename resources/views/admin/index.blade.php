@@ -32,6 +32,42 @@
             </div>
         </div>
     </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card text-center">
+            <div class="card-body p-t-10">
+                <h4 class="card-title text-muted mb-0">Flutterwave Payments</h4>
+                <h4 class="mt-3 mb-2"><b>{{format_price(App\Models\Payment::where('status', 1)->where('payment_method','flutterwave')->sum('amount'))}}</b></h4>
+                <p class="text-muted mb-0 mt-3"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card text-center">
+            <div class="card-body p-t-10">
+                <h4 class="card-title text-muted mb-0">Paypal Payments</h4>
+                <h4 class="mt-3 mb-2"><b>{{format_price2(App\Models\Payment::where('status', 1)->where('payment_method','paypal')->sum('amount'))}}</b></h4>
+                <p class="text-muted mb-0 mt-3"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card text-center">
+            <div class="card-body p-t-10">
+                <h4 class="card-title text-muted mb-0">Stripe Payments</h4>
+                <h4 class="mt-3 mb-2"><b>{{format_price2(App\Models\Payment::where('status', 1)->where('payment_method','stripe')->sum('amount'))}}</b></h4>
+                <p class="text-muted mb-0 mt-3"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card text-center">
+            <div class="card-body p-t-10">
+                <h4 class="card-title text-muted mb-0">Momo Payments</h4>
+                <h4 class="mt-3 mb-2"><b>{{format_price(App\Models\Payment::where('status', 1)->where('payment_method','momo')->sum('amount'))}}</b></h4>
+                <p class="text-muted mb-0 mt-3"></p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="card">

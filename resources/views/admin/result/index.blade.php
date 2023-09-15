@@ -22,7 +22,7 @@
                 <tr>
                     <th>{{$item->id}}</th>
                     <td>
-                        <a href="{{ url('category/'.$item->slug ) }}" style="color:blue" data-bs-toggle="tooltip" data-placement="bottom" title="View">
+                        <a href="{{ url('c/'.$item->slug ) }}" style="color:blue" data-bs-toggle="tooltip" data-placement="bottom" title="View">
                             {{ Str::limit($item->name, 100) }}
                         </a>
                     </td>

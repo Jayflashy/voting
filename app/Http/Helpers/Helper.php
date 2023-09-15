@@ -142,7 +142,7 @@ if (!function_exists('format_price')) {
     {
         $fomated_price = number_format($price, 2);
         $currency = get_setting('currency');
-        return $currency .' '.$fomated_price;
+        return $currency .''.$fomated_price;
     }
 }
 function format_price2($price)

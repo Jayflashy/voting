@@ -13,6 +13,7 @@
                         <tr>
                             <th>ID</th>
                             <th>CONTESTANT NAME</th>
+                            <th>IMAGE</th>
                             <th>TOTAL VOTES</th>
                             <th>STATUS</th>
                             <th>RESULT</th>
@@ -23,6 +24,9 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$item->name}}</td>
+                            <td>
+                                <img src="{{my_asset($item->image)}}" class="table-image" alt="">
+                            </td>
                             <td>{{$item->votes}}</td>
                             <td>{!!get_status($item->status)!!}</td>
                             <td>{{result_percentage($item->id)}}</td>
@@ -65,6 +69,9 @@
 @endsection
 
 @section('styles')
+<style>
+    .table-image{width:50px;}
+</style>
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <!-- DataTables Buttons Extension CSS -->
