@@ -14,7 +14,7 @@
             </div>
         </div>
         {{-- zVoting Form --}}
-        <form action="{{route('vote')}}" enctype="multipart/form-data" method="post">
+        <form action="{{route('vote')}}" enctype="multipart/form-data" id="paymentForm" method="post">
             @csrf
             <div class="row">
                 <div class="form-group col-sm-6">
@@ -55,13 +55,16 @@
                 </div>
             </div>
 
+            <input type="hidden" name="reference" id="trx_ref" value="{{getTrx(14)}}">
+            <input type="text" hidden name="amount" id="amount" value="{{get_setting('price')}}">
             <input type="hidden" name="contestant_id" value="{{$contestant->id}}">
+            <input type="hidden" name="desc" value="Payment for {{$contestant->name}}">
             <div class="form-group my-2">
                 <label for="gateway" class="form-label">{{__('Select Payment Option')}}</label>
                 <div class="row mx-auto">
                     @if (sys_setting('flutterwave_payment') == 1)
                     <div class="col-6 col-sm-3">
-                        <label class="mb-2 pay-option" data-toggle="tooltip" data-title="FLutterwave" title="Card and Mobile Money">
+                        <label class="mb-2 pay-option" data-toggle="tooltip" data-title="FLutterwave" title="Card and Mobile Money" id="start-payment-button" onclick="makePayment()">
                             <input type="radio" id="" name="payment_type" value="flutterwave">
                             <span>
                                 <img class="pay-method" src="{{static_asset('img/flutter.png')}}" >
@@ -106,9 +109,14 @@
                 </div>
             </div>
 
-            <button class=" mt-2 w-100 btn joinButton text-white">Continue</button>
+            {{-- <button class=" mt-2 w-100 btn joinButton text-white">Continue</button> --}}
         </form>
     </div>
+</div>
+<div class="hidden">
+    <input type="text" hidden id="flutter_url" value="{{route('flutter.success')}}">
+    <input type="text" hidden id="public_key" value="{{env('FLW_PUBLIC_KEY')}}">
+    <input type="text" hidden id="currency" value="{{get_setting('currency_code')}}">
 </div>
 
 {{-- @push('css') --}}
@@ -190,7 +198,62 @@
         var totalFormatted = total.toFixed(2); // Round to 2 decimal places
         var totalFormatted2 = total2.toFixed(2); // Round to 2 decimal places
         document.getElementById("ItemsTotal").innerHTML = totalFormatted;
+        document.getElementById("amount").innerHTML = totalFormatted;
         document.getElementById("ItemsTotal2").innerHTML = totalFormatted2;
     }
 
+    // get form fields
+    function getFormFields() {
+        // Get the form element by its ID
+        var form = document.getElementById("paymentForm");
+        // Create an object to store form fields and their values
+        var formData = {};
+        // Iterate through the form elements
+        for (var i = 0; i < form.elements.length; i++) {
+            var element = form.elements[i];
+            if (element.name) {
+                // Check if the element has a name attribute
+                formData[element.name] = element.value;
+            }
+        }
+        return formData;
+    }
+
+
+    function makePayment() {
+
+        const country = document.getElementById('countrySelect').value;
+        const email = document.getElementById('Email').value;
+        const phone = document.getElementById('phone').value;
+        const quantity = document.getElementById('quantity').value;
+
+        const price = parseFloat(document.getElementById('quantity').getAttribute('data-price'));
+        const totalAmount = price * parseFloat(quantity);
+        const formFields = getFormFields();
+        // show alert if name and email empty
+        if(email == "" || phone == ""){
+            Snackbar.show({
+                text: 'Please fill all details',
+                backgroundColor: '#e3342f'
+            });
+            return;
+        }
+
+        const checkoutData = {
+            public_key: document.getElementById('public_key').value, // Replace with your actual public key
+            tx_ref: document.getElementById('trx_ref').value, // Assuming get_trx(18) returns a valid transaction reference
+            payment_options: "card, banktransfer, ussd,mobilemoneyghana,mobilemoneyfranco,mobilemoneyuganda,mobilemoneyrwanda,mobilemoneyzambia,barter,credit",
+            amount: totalAmount, // Assuming totalAmount is defined somewhere in your code
+            currency: document.getElementById('currency').value, // Assuming get_setting('currency_code') returns the currency code
+            redirect_url: document.getElementById('flutter_url').value, // Replace with the actual redirect URL
+            meta: formFields,
+            customer: {
+                email: email, // Include the email from the form
+                phone_number: phone, // Include the phone number from the form
+                name: "Customer Name", // Replace with the actual customer name if available
+            },
+        };
+
+        FlutterwaveCheckout(checkoutData);
+    }
 </script>

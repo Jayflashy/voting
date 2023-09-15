@@ -56,6 +56,7 @@
     <script src="{{ static_asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ static_asset('js/core.js') }}"></script>
     <script src="{{static_asset('js/sweetalert.min.js')}}"></script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @yield('scripts')
     @stack('scripts2')
