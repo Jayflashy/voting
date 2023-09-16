@@ -86,7 +86,7 @@
                     @endif
                     @if (sys_setting('paypal_payment') == 1)
                     <div class="col-6 col-sm-3">
-                        <label class="mb-2 pay-option" data-toggle="tooltip" title="Paypal Payment">
+                        <label class="mb-2 pay-option" data-toggle="tooltip" title="Paypal Payment" onclick="paypalPayment()">
                             <input type="radio" id="" name="payment_type" value="paypal">
                             <span>
                                 <img class="pay-method" src="{{static_asset('img/paypal.png')}}" >
@@ -97,7 +97,7 @@
                     @endif
                     @if (sys_setting('momo_payment') == 1)
                     <div class="col-6 col-sm-3">
-                        <label class="mb-2 pay-option" data-toggle="tooltip" title="Momo Payment">
+                        <label class="mb-2 pay-option" data-toggle="tooltip" title="Momo Payment" onclick="momoPayment()">
                             <input type="radio" id="" name="payment_type" value="momo">
                             <span>
                                 <img class="pay-method" src="{{static_asset('img/momo.png')}}" >
@@ -138,6 +138,9 @@
                 </button>
             <form>
         </div>
+        <div class="card-body" id="paypalForm">
+            <div id="btn-paypal-checkout"></div>
+        </div>
     </div>
 </div>
 <div class="hidden">
@@ -149,6 +152,9 @@
 {{-- @push('css') --}}
 <style>
     #stripeForm{
+        display: none;
+    }
+    #paypalForm{
         display: none;
     }
     .form-label{
@@ -253,6 +259,7 @@
     function makePayment() {
         //Hide stripe form and other forms
         document.getElementById('stripeForm').style.display = 'none';
+        document.getElementById('paypalForm').style.display = 'none';
 
         const country = document.getElementById('countrySelect').value;
         const email = document.getElementById('Email').value;
@@ -289,7 +296,50 @@
         FlutterwaveCheckout(checkoutData);
     }
 
+    function paypalPayment(){
+        document.getElementById('stripeForm').style.display = 'none';
+
+        const email = document.getElementById('Email').value;
+        const phone = document.getElementById('phone').value;
+        const quantity = document.getElementById('quantity').value;
+        const price = parseFloat(document.getElementById('quantity').getAttribute('data-price2'));
+        const totalAmount = price * parseFloat(quantity);
+        const formFields = getFormFields();
+        // show alert if name and email empty
+        if(email == "" || phone == ""){
+            Snackbar.show({
+                text: 'Please fill all details',
+                pos: 'top-right',
+                backgroundColor: '#e3342f'
+            });
+            return;
+        }
+
+        var form = document.getElementById("paymentForm");
+
+        form.submit();
+
+    }
+    function momoPayment(){
+        document.getElementById('stripeForm').style.display = 'none';
+        const email = document.getElementById('Email').value;
+        const phone = document.getElementById('phone').value;
+        // show alert if name and email empty
+        if(email == "" || phone == ""){
+            Snackbar.show({
+                text: 'Please fill all details',
+                pos: 'top-right',
+                backgroundColor: '#e3342f'
+            });
+            return;
+        }
+        var form = document.getElementById("paymentForm");
+
+        form.submit();
+    }
     function stripePayment(){
+
+        document.getElementById('paypalForm').style.display = 'none';
         // show stripe form
         const country = document.getElementById('countrySelect').value;
         const email = document.getElementById('Email').value;

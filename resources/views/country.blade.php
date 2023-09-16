@@ -35,7 +35,7 @@
 <option value="Burkina Faso">Burkina Faso</option>
 <option value="Burundi">Burundi</option>
 <option value="Cambodia">Cambodia</option>
-<option value="Cameroon">Cameroon</option>
+<option value="Cameroon" selected>Cameroon</option>
 <option value="Canada">Canada</option>
 <option value="Cape Verde">Cape Verde</option>
 <option value="Cayman Islands">Cayman Islands</option>

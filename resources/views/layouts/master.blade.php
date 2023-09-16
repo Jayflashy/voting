@@ -59,12 +59,19 @@
     <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <!-- Load the required Braintree components. -->
+    <script src="https://js.braintreegateway.com/web/3.39.0/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.39.0/js/paypal-checkout.min.js"></script>
+
     @yield('scripts')
     @stack('scripts2')
     <script type="text/javascript">
         @if(Session::get('success'))
         Snackbar.show({
             text: '{{Session::get('success')}}',
+            pos: 'top-right',
             backgroundColor: '#38c172'
         });
         swal("Successful!", '{{Session::get('success')}}', "success")
@@ -88,6 +95,7 @@
         });
         Snackbar.show({
             text: '{{Session::get('error')}}',
+            pos: 'top-right',
             backgroundColor: '#e3342f'
         });
         @endif
