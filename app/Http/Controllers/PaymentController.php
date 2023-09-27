@@ -176,14 +176,16 @@ class PaymentController extends Controller
     function initMomo($details){
         $reference = getTrx(15);
         $details['reference'] = $reference;
-        $amount = $details['amount2'];
+        $amount = $details['amount'];
+        // return $details;
         session()->put('payment_data', $details);
-        try{
+        // try{
             $collection = new MomoApi();
             // return $collection->getToken();
-            $transactionId = $collection->requestToPay($reference, $details['phone'], 10, $details['desc']);
+            $transactionId = $collection->requestToPay($reference, $details['phone'], $amount, $details['desc']);
 
             $response = $collection->getTransactionStatus($transactionId);
+            return [$response, $transactionId];
             if ($response['status'] == "SUCCESSFUL") {
                 // code...
                 $paydone = new HomeController;
@@ -194,11 +196,11 @@ class PaymentController extends Controller
                     ->route('index')
                     ->with('error', $response['message'] ?? 'Payment was not successful. Something went wrong.');
             }
-        }catch(Exception $e){
-            // dd($e);
-            return redirect()
-                ->route('index')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
-        }
+        // }catch(Exception $e){
+        //     // dd($e);
+        //     return redirect()
+        //         ->route('index')
+        //         ->with('error', $response['message'] ?? 'Something went wrong.');
+        // }
     }
 }
