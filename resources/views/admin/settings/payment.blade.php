@@ -173,24 +173,19 @@
                     <input type="hidden" name="payment_method" value="momo">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="hidden" name="types[]" value="MOMO_APP">
-                            <label class="form-label">{{__('Momo App')}}</label>
-                            <input type="text" class="form-control" name="MOMO_APP" value="{{ env('MOMO_APP') }}" placeholder="Momo App" required>
+                            <input type="hidden" name="types[]" value="MOMO_API_KEY">
+                            <label class="form-label">{{__('Momo API Key')}}</label>
+                            <input type="text" class="form-control" name="MOMO_API_KEY" value="{{ env('MOMO_API_KEY') }}" placeholder="Momo API Key" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="types[]" value="MOMO_USER_ID">
+                            <label class="form-label">{{__('Momo User ID')}}</label>
+                            <input type="text" class="form-control" name="MOMO_USER_ID" value="{{ env('MOMO_USER_ID') }}" placeholder="Momo User ID" required>
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="types[]" value="MOMO_ENVIRONMENT">
                             <label class="form-label">{{__('Momo Environment')}}</label>
                             <input type="text" class="form-control" name="MOMO_ENVIRONMENT" value="{{ env('MOMO_ENVIRONMENT') }}" placeholder="Momo Environment" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="hidden" name="types[]" value="MOMO_CURRENCY">
-                            <label class="form-label">{{__('Momo Currency')}}</label>
-                            <input type="text" class="form-control" name="MOMO_CURRENCY" value="{{ env('MOMO_CURRENCY') }}" placeholder="Momo Currency" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="hidden" name="types[]" value="MOMO_PROVIDER_CALLBACK_HOST">
-                            <label class="form-label">{{__('Momo Provider Callback Host')}}</label>
-                            <input type="text" class="form-control" name="MOMO_PROVIDER_CALLBACK_HOST" value="{{ env('MOMO_PROVIDER_CALLBACK_HOST') }}" placeholder="Momo Provider Callback Host" required>
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="types[]" value="MOMO_API_BASE_URI">
@@ -200,9 +195,14 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="hidden" name="types[]" value="MOMO_PRODUCT">
-                            <label class="form-label">{{__('Momo Product')}}</label>
-                            <input type="text" class="form-control" name="MOMO_PRODUCT" value="{{ env('MOMO_PRODUCT') }}" placeholder="Momo Product" required>
+                            <input type="hidden" name="types[]" value="MOMO_CURRENCY">
+                            <label class="form-label">{{__('Momo Currency')}}</label>
+                            <input type="text" class="form-control" name="MOMO_CURRENCY" value="{{ env('MOMO_CURRENCY') }}" placeholder="Momo Currency" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="types[]" value="MOMO_PARTY_ID">
+                            <label class="form-label">{{__('Momo Party Type')}}</label>
+                            <input type="text" class="form-control" name="MOMO_PARTY_ID" value="{{ env('MOMO_PARTY_ID') }}" placeholder="Momo Party Type" required>
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="types[]" value="MOMO_COLLECTION_SUBSCRIPTION_KEY">
@@ -210,9 +210,18 @@
                             <input type="text" class="form-control" name="MOMO_COLLECTION_SUBSCRIPTION_KEY" value="{{ env('MOMO_COLLECTION_SUBSCRIPTION_KEY') }}" placeholder="Momo Collection Subscription Key" required>
                         </div>
                         <div class="form-group">
+                            <label class="form-label">{{__('Momo Webhook Url')}}</label>
+                            <input type="text" class="form-control" value="{{route('momo.success')}}" readonly>
+                        </div>
+                        {{-- <div class="form-group">
                             <input type="hidden" name="types[]" value="MOMO_COLLECTION_ID">
                             <label class="form-label">{{__('Momo Collection ID')}}</label>
                             <input type="text" class="form-control" name="MOMO_COLLECTION_ID" value="{{ env('MOMO_COLLECTION_ID') }}" placeholder="Momo Collection ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="types[]" value="MOMO_PRODUCT">
+                            <label class="form-label">{{__('Momo Product')}}</label>
+                            <input type="text" class="form-control" name="MOMO_PRODUCT" value="{{ env('MOMO_PRODUCT') }}" placeholder="Momo Product" required>
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="types[]" value="MOMO_COLLECTION_CALLBACK_URI">
@@ -223,7 +232,7 @@
                             <input type="hidden" name="types[]" value="MOMO_COLLECTION_SECRET">
                             <label class="form-label">{{__('Momo Collection Secret')}}</label>
                             <input type="text" class="form-control" name="MOMO_COLLECTION_SECRET" value="{{ env('MOMO_COLLECTION_SECRET') }}" placeholder="Momo Collection Secret" required>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="card-footer text-right">

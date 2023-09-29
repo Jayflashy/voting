@@ -63,7 +63,7 @@ class MomoApi
         $this->accountStatusUri = $config->get('mtn-momo.products.collection.account_status_uri');
         $this->accountBalanceUri = $config->get('mtn-momo.products.collection.account_balance_uri');
         $this->accountHolderInfoUri = $config->get('mtn-momo.products.collection.account_holder_info_uri');
-        $this->partyIdType = $config->get('mtn-momo.products.collection.party_id_type');
+        $this->partyIdType = env('MOMO_PARTY_ID');
 
     }
 
