@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MomoTrx;
 use App\Utility\MomoApi;
 use Illuminate\Http\Request;
 use Bhekor\LaravelFlutterwave\Facades\Flutterwave;
@@ -185,12 +186,26 @@ class PaymentController extends Controller
             $transactionId = $collection->requestToPay($reference, $details['phone'], $amount, $details['desc']);
 
             $response = $collection->getTransactionStatus($transactionId);
-            return [$response, $transactionId];
+            // return [$response, $transactionId];
             if ($response['status'] == "SUCCESSFUL") {
                 // code...
                 $paydone = new HomeController;
                 return $paydone->complete_voting($details, $response);
-            } else {
+            }elseif ($response['status'] == "PENDING"){
+                // save to db
+                $momotrx = new MomoTrx();
+                $momotrx->transactionId = $transactionId;
+                $momotrx->externalId = $response['externalId'];
+                $momotrx->code = $response['financialTransactionId'];
+                $momotrx->response = json_encode($response);
+                $momotrx->details = json_encode($details);
+                $momotrx->number = $details['phone'];
+                $momotrx->amount = $amount;
+                $momotrx->save();
+
+                // return $momotrx;
+                return redirect()->route('index')->with('success', 'Payment is processing. It will be updated when confirmed.');
+            }else {
                 // code...
                 return redirect()
                     ->route('index')
@@ -203,4 +218,29 @@ class PaymentController extends Controller
         //         ->with('error', $response['message'] ?? 'Something went wrong.');
         // }
     }
+    //momo callback
+
+    function momo_success(Request $request){
+        $logFile = 'momo_webhook_log.txt';
+        $logMessage = json_encode($request->all(), JSON_PRETTY_PRINT);
+        file_put_contents($logFile, $logMessage, FILE_APPEND);
+
+        $input = $request->all();
+        if($input == null) return "error";
+        if($input['status'] == "SUCCESSFUL"){
+            // get details from database
+            $momotrx = MomoTrx::whereCode($input['financialTransactionId'])->first();
+            if($momotrx){
+                $details = json_decode($momotrx->details, true);
+                // return $details['reference'];
+                $momotrx->status = 1;
+                $paydone = new HomeController;
+                $paydone->complete_voting($details, $input);
+
+                return "success";
+            }
+        }
+        return 'momo callback';
+    }
+
 }

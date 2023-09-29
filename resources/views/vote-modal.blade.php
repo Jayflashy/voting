@@ -32,7 +32,7 @@
                 <div class="form-group col-sm-6">
                     <label class="form-label" for="phone">{{__('Your Phone Number')}}</label>
                     <div class="">
-                        <input type="tel" class="form-control" required name="phone" id="phone" placeholder="{{__('Your Phone Number')}}">
+                        <input type="tel" class="form-control" required name="phone" value="237" id="phone" placeholder="{{__('237')}}">
                     </div>
                 </div>
                 <div class="form-group col-sm-6">

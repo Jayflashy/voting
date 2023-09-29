@@ -34,7 +34,7 @@ Route::controller(HomeController::class)->group(function(){
 });
 
 // Payment Callback
-Route::controller(PaymentController::class)->group(function(){
+Route::controller(PaymentController::class)->prefix('payments')->group(function(){
     Route::get('/paypal/success/', 'paypal_success')->name('paypal.success');
     Route::get('/paypal/cancel/', 'paypal_cancel')->name('paypal.cancel');
     Route::get('/flutter/success/', 'flutter_success')->name('flutter.success');

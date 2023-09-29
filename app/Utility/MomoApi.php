@@ -53,7 +53,7 @@ class MomoApi
         $this->clientSecret =env('MOMO_COLLECTION_SECRET');
         $this->clientCallbackUri = env('MOMO_COLLECTION_CALLBACK_URI');
         $this->currency = env('MOMO_CURRENCY', 'XAF');
-        $this->environment = env('MOMO_ENVIRONMENT','live');
+        $this->environment = env('MOMO_ENVIRONMENT','mtncameroon');
 
         $this->baseUri = env('MOMO_API_BASE_URI');
 
@@ -94,8 +94,9 @@ class MomoApi
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
             'X-Reference-Id' => $momoTransactionId,
-            'X-Target-Environment' => "mtncameroon",
-            // 'X-Callback-Url' => $this->clientCallbackUri,
+            'X-Target-Environment' => $this->environment,
+            // 'X-Callback-Url' => route('momo.success'),
+            // 'X-Reference-Id' => "https://localhostvoting.eu-1.sharedwithexpose.com/voting/momopayment/success",
             'Ocp-Apim-Subscription-Key' => $this->subscriptionKey
         ];
 
@@ -139,7 +140,7 @@ class MomoApi
             'Authorization' => 'Bearer '.$this->getToken() ,
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'X-Target-Environment' => "mtncameroon",
+            'X-Target-Environment' => $this->environment,
             'Ocp-Apim-Subscription-Key' => $this->subscriptionKey
         ];
         // return $this->baseUri.$transactionStatusUri;

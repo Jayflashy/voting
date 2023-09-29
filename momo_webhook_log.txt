@@ -1,0 +1,177 @@
+{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085273179",
+    "externalId": "GGPVF9395HA2M6D",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}{
+    "financialTransactionId": "7085232766",
+    "externalId": "MXV34AVEMR2DTXJ",
+    "amount": "500",
+    "currency": "XAF",
+    "payer": {
+        "partyIdType": "MSISDN",
+        "partyId": "237654561314"
+    },
+    "payerMessage": "Payment for Pastor Bright",
+    "status": "SUCCESSFUL"
+}
