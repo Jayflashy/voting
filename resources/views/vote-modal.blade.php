@@ -13,6 +13,41 @@
                 <img src="{{my_asset($contestant->image)}}" />
             </div>
         </div>
+        @if (get_setting('contest_type') == 'free')
+        <form action="{{route('free.vote')}}" enctype="multipart/form-data" id="paymentForm" method="post">
+            @csrf
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="country" class="form-label">Select Country</label>
+                    <select class="form-control form-select" id="countrySelect" required name="country">
+                        @include('country')
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="form-label" for="name">{{__('Name')}}</label>
+                    <div class="">
+                        <input type="text" class="form-control" required name="name" id="name" placeholder="{{__('Name')}}">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="form-label" for="Email">{{__('Your Email')}}</label>
+                    <div class="">
+                        <input type="email" class="form-control" required name="email" id="Email" placeholder="{{__('Your Email')}}">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="form-label" for="phone">{{__('Your Phone Number')}}</label>
+                    <div class="">
+                        <input type="tel" class="form-control" required name="phone" value="237" id="phone" placeholder="{{__('237')}}">
+                    </div>
+                </div>
+                <input type="hidden" name="reference" id="trx_ref" value="{{getTrx(14)}}">
+                <input type="hidden" name="contestant_id" value="{{$contestant->id}}">
+                <input type="hidden" name="desc" value="Payment for {{$contestant->name}}">
+                <button class=" mt-2 w-100 btn joinButton text-white" type="submit">Free Vote</button>
+            </div>
+        </form>
+        @else
         {{-- zVoting Form --}}
         <form action="{{route('vote')}}" enctype="multipart/form-data" id="paymentForm" method="post">
             @csrf
@@ -141,6 +176,7 @@
         <div class="card-body" id="paypalForm">
             <div id="btn-paypal-checkout"></div>
         </div>
+        @endif
     </div>
 </div>
 <div class="hidden">

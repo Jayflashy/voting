@@ -37,6 +37,15 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
+                    <label class=" form-label">@lang('Contest Type')</label>
+                    <div class="">
+                        <select name="contest_type" class="form-select" required>
+                            <option value="free" @if (get_setting('contest_type') == 'free') selected @endif> Free Contest</option>
+                            <option value="paid" @if (get_setting('contest_type') == 'paid') selected @endif> Paid Contest</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class=" form-label">@lang('Website Phone')</label>
                     <div class="">
                         <input type="tel" name="phone" required class="form-control" value="{{ get_setting('phone') }}">

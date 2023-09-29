@@ -28,6 +28,6 @@ class Setting extends Model
         'custom_js',
         'custom_css',
         'is_adsense','price2',
-        'meta_keywords','is_announcement','announcement','sponsor','price','banner','currency2','currency_rate','currency_code2',
+        'meta_keywords','is_announcement','announcement','sponsor','price','banner','currency2','currency_rate','currency_code2','contest_type',
     ];
 }

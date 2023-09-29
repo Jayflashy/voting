@@ -29,6 +29,7 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('index');
     Route::get('/c/{slug}', 'view_category')->name('category');
     Route::post('/vote-contestant', 'vote_contestant')->name('vote');
+    Route::post('/free-vote', 'free_vote_contestant')->name('free.vote');
     Route::post('/contestant/vote-modal', 'vote_modal')->name('vote.modal');
     Route::get('/logout', 'logout')->name('logout');
 });

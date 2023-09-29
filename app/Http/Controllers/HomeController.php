@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Contestant;
+use App\Models\FreeVote;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,36 @@ class HomeController extends Controller
         $contestant = Contestant::findOrFail($request->id);
         return view('vote-modal', compact('contestant'));
 
+    }
+    function free_vote_contestant(Request $request){
+        $request->validate([
+            'email' => 'required|string|email|max:255',
+        ]);
+        $contestant = Contestant::findOrFail($request->contestant_id);
+        // check if user has voted
+        $voted = FreeVote::where('category_id', $contestant->category_id)->get();
+        if (! $voted->contains('email', $request->email)){
+            $vote = new FreeVote();
+            $vote->email = $request->email;
+            $vote->category_id = $contestant->category_id;
+            $vote->contestant_id = $contestant->id;
+            $vote->vote = 1;
+            $vote->name = $request->name;
+            $vote->country = $request->country ?? "";
+            $vote->phone = $request->phone;
+            $vote->reference = $request->reference ?? getTrx(15);
+            $vote->desc = $request->desc;
+            $vote->save();
+
+            $contestant->votes += 1;
+            $contestant->save();
+
+            return back()->with('success','You have successfully vote in this Contest.');
+
+        }else {
+            return back()->with('error','You have already voted for a Contestant in this Category. Please try again');
+        }
+        return $request;
     }
     function vote_contestant(Request $request){
         $contestant = Contestant::findOrFail($request->contestant_id);

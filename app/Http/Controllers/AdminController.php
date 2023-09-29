@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{
     Category,
     Contestant,
+    FreeVote,
     Payment,
     Setting,
     SystemSetting
@@ -195,11 +196,12 @@ class AdminController extends Controller
 
     // reports
     function payment_history(){
-        $payments = Payment::orderByDesc('id')->paginate(30);
+        $payments = Payment::orderByDesc('id')->paginate(50);
         return view('admin.report.payment', compact('payments'));
     }
 
     function vote_history(){
-        return view('admin.report.vote');
+        $payments = FreeVote::orderByDesc('id')->paginate(50);
+        return view('admin.report.vote', compact('payments'));
     }
 }
